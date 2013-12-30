@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="hotLunch:war ">
+    <output-path>$PROJECT_DIR$/out/artifacts/hotLunch_war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="hotLunch/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hotLunch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="gson-1.7.1" />
+          <element id="library" level="project" name="commons-lang3-3.1" />
+          <element id="library" level="project" name="com.springsource" />
+          <element id="library" level="project" name="appengine-jars" />
+          <element id="library" level="project" name="com.fasterxml.jackson.core:jackson-core:2.3.0-SNAPSHOT" />
+          <element id="library" level="project" name="org.codehaus.jackson:jackson-mapper-asl:1.9.0-SNAPSHOT" />
+          <element id="library" level="project" name="poi-3.9-20121203" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

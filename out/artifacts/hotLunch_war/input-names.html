@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <title>Hot Lunch Input</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" type="text/css">
+    <!-- Hot Lunch Specific Styles -->
+    <link href="css/lunch.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+</script>
+<script type="text/javascript" src="js/bootstrap.js">
+</script>
+<script type="text/javascript" src="js/input-name.js">
+</script>
+
+<div id="container" class="container">
+    <h1>Hot Lunch Item Input</h1>
+
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label>Grade:</label>
+
+            <div class="controls">
+                <select id="grade" name="grade">
+                    <option selected="selected">Select Grade</option>
+                    <option value="K">Kindergarten</option>
+                    <option value="1">Grade 1</option>
+                    <option value="2">Grade 2</option>
+                    <option value="3">Grade 3</option>
+                    <option value="4">Grade 4</option>
+                    <option value="5">Grade 5</option>
+                    <option value="6">Grade 6</option>
+                    <option value="7">Grade 7</option>
+                    <option value="8">Grade 8</option>
+                    <option value="F">Faculty/Aide</option>
+                </select>
+            </div>
+
+            <label>First Name:</label>
+
+            <div class="controls">
+                <input id="first-name" type="text">
+            </div>
+            <label>Last Name:</label>
+
+            <div class="controls">
+                <input id="last-name" type="text">
+            </div>
+        </div>
+        <hr/>
+    </form>
+    <button id="submit" class="btn btn-info">Submit Name</button>
+
+    <h3 id="result"></h3>
+</div>
+</body>
+</html>

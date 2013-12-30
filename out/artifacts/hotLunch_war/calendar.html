@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <title>Hot Lunch Calendar Setup</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+</script>
+<script type="text/javascript" src="js/bootstrap.js">
+</script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js">
+</script>
+<script type="text/javascript" src="js/calendar.js">
+</script>
+
+<div id="container" class="container">
+    <h1>Hot Lunch Calendar Input</h1>
+
+    <form class="form-horizontal">
+        <label>Month:</label>
+
+        <select id="month-choice">
+            <option selected="selected" value="select one">Select One</option>
+            <option value="sept">September 2013</option>
+            <option value="oct">October 2013</option>
+            <option value="nov">November 2013</option>
+            <option value="dec">December 2013</option>
+            <option value="jan">January 2014</option>
+            <option value="feb">February 2014</option>
+            <option value="mar">March 2014</option>
+            <option value="apr">April 2014</option>
+            <option value="may">May 2014</option>
+        </select>
+
+        <label>Date:</label>
+
+        <input id="datepicker" type="text">
+        <label>Lunch Item:</label>
+
+        <select id="item-choice">
+            <option selected="selected" value="select one">Select One</option>
+            <option value="hotdog">Hot Dog</option>
+            <option value="chipotle">Chipotle</option>
+            <option value="chickfila">Chick-Fil-A</option>
+            <option value="portofino1">Portofino #1</option>
+            <option value="pizza1">Pizza #1</option>
+            <option value="subway">Subway</option>
+            <option value="kfc">KFC</option>
+            <option value="flamebroiler">Flame Broiler</option>
+            <option value="portofino2">Portofino #2</option>
+            <option value="pizza2">Pizza #2</option>
+            <option value="taquitos">Taquitos</option>
+            <option value="smoothie">Tropical Smoothie</option>
+            <option value="pickupstix">Pick Up Stix</option>
+            <option value="carls">Carls Jr.</option>
+        </select>
+
+        <hr/>
+    </form>
+    <button id="add-calendar-item" class="btn btn-info">Add item to Calendar</button>
+    <div id="result">
+       <ul id="calendar-list" class="list-group"></ul>
+    </div>
+
+
+    <button id="submit-calendar" class="btn btn-info">Submit Calendar</button>
+
+</div>
+</body>
+</html>

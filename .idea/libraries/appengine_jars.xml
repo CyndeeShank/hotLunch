@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="appengine-jars">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/appengine-jsr107cache.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/datanucleus-appengine-1.0.10.final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/datanucleus-core-1.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/datanucleus-jpa-1.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/geronimo-jpa_3.0_spec-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/geronimo-jta_1.1_spec-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jdo2-api-2.3-eb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-api-labs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-tools-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-remote-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/appengine-api-labs.jar!/com/google/appengine/labs/repackaged/com/google/common/base/super" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-api-labs.jar!/com/google/appengine/labs/repackaged/com/google/common/util/super" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-tools-api.jar!/com/google/appengine/repackaged/com/google/common/base/super" />
+      <root url="jar://$PROJECT_DIR$/lib/appengine-remote-api.jar!/com/google/appengine/repackaged/com/google/common/base/super" />
+    </SOURCES>
+  </library>
+</component>

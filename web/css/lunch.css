@@ -1,0 +1,33 @@
+.select-yes-no {
+    width: 100px;
+}
+
+.select-add {
+    width: 110px;
+}
+
+.select-choice {
+    width: 225px;
+}
+
+.table-header {
+    vertical-align: center;
+}
+
+@media print
+{
+    .noPrint
+    {
+        display: none;
+    }
+}
+
+.field-trip-1 {
+    display: none;
+}
+.field-trip-2 {
+    display: none;
+}
+.field-trip-3 {
+    display: none;
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <title>Hot Lunch Menu</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-amelia.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-amelia.css" rel="stylesheet" type="text/css">
+    <!-- Hot Lunch Specific Styles -->
+    <link href="css/lunch.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.printPage.js"></script>
+<script type="text/javascript" src="js/lunch-nov.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+
+<div id="container" class="container">
+<div id="title">
+    <h1>Hot Lunch Menu for November 2013</h1>
+    <h2>All Orders Due Wednesday October 23</h2>
+    <h3>No Late Orders Accepted</h3>
+    <hr/>
+    <h4>Please select the grade to view a list of names for that grade</h4>
+</div>
+        <select id="grade" name="grade">
+            <option selected="selected">Select Grade</option>
+            <option value="K">Kindergarten</option>
+            <option value="1">Grade 1</option>
+            <option value="2">Grade 2</option>
+            <option value="3">Grade 3</option>
+            <option value="4">Grade 4</option>
+            <option value="5">Grade 5</option>
+            <option value="6">Grade 6</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="F">Faculty/Aide</option>
+        </select>
+
+<label>Name:</label>
+<input id="name" name="name" type="text" data-provide="typeahead" autocomplete="off" placeholder="Enter Name...">
+<button id="enter" class="btn btn-info">Enter Hot Lunch Choices</button>
+<div class="text-info">Press enter to select the name</div>
+
+<p></p>
+
+<form id="lunch-form">
+<fieldset>
+<legend>Make your selections below</legend>
+
+<table id="selections" class="table table-bordered table-hover">
+<caption></caption>
+<thead>
+<tr class="table-header">
+    <th>Date</th>
+    <th>Lunch Item</th>
+    <th>Choice(s)</th>
+    <th width="25px">Order One</th>
+    <th>Price</th>
+    <th>Order Additional</th>
+    <th>Price</th>
+</tr>
+<tr>
+    <td colspan="7"><em>Click on the Lunch Item (green box) to see a description of the Item, and click again to close
+        the description</em></td>
+</tr>
+</thead>
+<tbody>
+
+
+<tr>
+    <td>Friday November 1</td>
+    <input type="hidden" name="pizza1-date" value="Friday November 1, 2013"/>
+    <input type="hidden" name="pizza1-date-order" value="4"/>
+    <td>
+        <a id="pizza1" class="btn btn-default btn-success btn-block"
+           data-content="Cheese or Pepperoni Pizza, choice of Salad or Veggie &amp; Rice Krispie Treat"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Pizza Hut">Pizza Hut</a>
+    </td>
+    <td>
+        <select id="pizza1-choice-1" name="pizza1-choice-1" class="select-choice">
+            <option selected="selected" value="cheese">Cheese Pizza</option>
+            <option value="pepp">Pepperoni Pizza</option>
+        </select>
+        <select id="pizza1-choice-2" name="pizza1-choice-2" class="select-choice">
+            <option selected="selected" value="salad">Side Salad</option>
+            <option value="veggie">Veggies</option>
+        </select>
+    </td>
+    <td>
+        <select id="pizza1-order" name="pizza1-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75</td>
+    <td>
+        <select id="pizza1-add" name="pizza1-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$1.75</td>
+</tr>
+<tr>
+    <td>Monday November 4</td>
+    <input type="hidden" name="taq-date" value="Monday November 4, 2013"/>
+    <input type="hidden" name="taq-date-order" value="9"/>
+    <td>
+        <a id="taq" class="btn btn-default btn-success btn-block"
+           data-content="Chicken Taquitos(3), Rice &amp; Fruit"
+           title="" data-placement="right" data-toggle="popover" href="#"
+           data-original-title="Taquitos">Taquitos</a>
+    </td>
+    <td></td>
+    <td>
+        <select id="taq-order" name="taq-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75</td>
+    <td>
+        <select id="taq-add" name="taq-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$1.75</td>
+</tr>
+<tr>
+    <td>Tuesday November 5</td>
+    <input type="hidden" name="smoothie-date" value="Tuesday November 5, 2013"/>
+    <input type="hidden" name="smoothie-date-order" value="10"/>
+    <td>
+        <a id="smoothie" class="btn btn-default btn-success btn-block"
+           data-content="Choice of Smoothie &amp; Turkey &amp; Cheese or Ham &amp; Cheese Croissant"
+           title="" data-placement="right" data-toggle="popover" href="#"
+           data-original-title="Smoothie &amp; Sandwich">Smoothie
+            &amp; Sandwich</a>
+    </td>
+    <td>
+        <select id="smoothie-choice-1" name="smoothie-choice-1" class="select-choice">
+            <option selected="selected" value="jetty">Jetty Punch (Strawberry &amp; Banana)</option>
+            <option value="mango">Mango Magic (Mango &amp; Pineapple)</option>
+        </select>
+        <select id="smoothie-choice-2" name="smoothie-choice-2" class="select-choice">
+            <option selected="selected" value="turkey">Turkey &amp Cheese Croissant</option>
+            <option value="ham">Ham &amp Cheese Croissant</option>
+        </select>
+    </td>
+    <td>
+        <select id="smoothie-order" name="smoothie-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="smoothie-add" name="smoothie-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr class="field-trip-2">
+    <td>Wednesday November 6</td>
+    <input type="hidden" name="pickup-date" value="Wednesday November 6, 2013"/>
+    <input type="hidden" name="pickup-date-order" value="11"/>
+    <td>
+        <a id="pickup" class="btn btn-default btn-success btn-block"
+           data-content="Chicken &amp; Rice Bowl, Fruit &amp; Fortune Cookie"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Pick Up Stix">Pick Up
+            Stix</a>
+    </td>
+    <td>
+        <select id="pickup-choice-1" name="pickup-choice-1" class="select-choice">
+            <option selected="selected" value="chicken">Chicken Bowl</option>
+            <option value="tofu">Tofu Bowl</option>
+        </select>
+        <select id="pickup-choice-2" name="pickup-choice-2" class="select-choice">
+            <option selected="selected" value="white">White Rice</option>
+            <option value="brown">Brown Rice</option>
+        </select>
+    </td>
+    <td>
+        <select id="pickup-order" name="pickup-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="pickup-add" name="pickup-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr class="field-trip-1">
+    <td>Thursday November 7</td>
+    <input type="hidden" name="carls-date" value="Thursday November 7, 2013"/>
+    <input type="hidden" name="carls-date-order" value="12"/>
+    <td>
+        <a id="carls" class="btn btn-default btn-success btn-block"
+           data-content="Cheeseburger, Hamburger or Chicken Stars(6), Fruit &amp; Baked Lays"
+           title="" data-placement="right" data-toggle="popover" href="#"
+           data-original-title="Carls Jr. Burger or Chicken Stars">Carls
+            Jr. Burger or Chicken Stars</a>
+    </td>
+    <td>
+        <select id="carls-choice-1" name="carls-choice-1" class="select-choice">
+            <option selected="selected" value="cheese">Cheeseburger</option>
+            <option value="regular">Hamburger</option>
+            <option value="chicken">Chicken Stars</option>
+        </select>
+    </td>
+    <td>
+        <select id="carls-order" name="carls-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75</td>
+    <td>
+        <select id="carls-add" name="carls-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$1.75</td>
+</tr>
+<tr>
+    <td>Friday November 8</td>
+    <td>No Hot Lunch</td>
+</tr>
+<tr>
+    <td>Monday November 11</td>
+    <input type="hidden" name="hotdog-date" value="Monday November 11, 2013"/>
+    <input type="hidden" name="hotdog-date-order" value="14"/>
+    <td>
+        <a id="hotdog" class="btn btn-default btn-success btn-block"
+           data-content="Wienerschnitzel Hot Dog, Cheez Its &amp; Fruit"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Hot Dog">Hot Dog</a>
+    </td>
+    <td></td>
+    <td>
+        <select id="hotdog-order" name="hotdog-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75</td>
+    <td>
+        <select id="hotdog-add" name="hotdog-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$1.75</td>
+</tr>
+
+<tr class="field-trip-3">
+    <td>Tuesday November 12</td>
+    <input type="hidden" name="chipotle-date" value="Tuesday November 12, 2013"/>
+    <input type="hidden" name="chipotle-date-order" value="1"/>
+    <td>
+        <a id="chipotle" class="btn btn-default btn-success btn-block"
+           data-content="Chicken or Cheese Quesadilla, Fruit &amp; Chips"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Chipotle Quesadilla">Chipotle
+            Quesadilla</a>
+    </td>
+    <td>
+        <select id="chipotle-choice-1" name="chipotle-choice-1" class="select-choice">
+            <option selected="selected" value="one">One Quesadilla ($3.75)</option>
+            <option value="two">Two Quesadillas ($4.50)</option>
+        </select>
+        <select id="chipotle-choice-2" name="chipotle-choice-2" class="select-choice">
+            <option selected="selected" value="cheese">Cheese Quesadilla</option>
+            <option value="chicken">Chicken Quesadilla</option>
+        </select>
+    </td>
+    <td>
+        <select id="chipotle-order" name="chipotle-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75/$4.50</td>
+    <td>
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>Wednesday November 13</td>
+    <input type="hidden" name="chickfila-date" value="Wednesday November 13, 2013"/>
+    <input type="hidden" name="chickfila-date-order" value="2"/>
+    <td>
+        <a id="chickfila" class="btn btn-default btn-success btn-block"
+           data-content="Breaded or Grilled Chicken Nuggets, Fruit &amp; Cookies"
+           title="" data-placement="right" data-toggle="popover" href="#"
+           data-original-title="Chick-Fil-A">Chick-Fil-A</a>
+    </td>
+    <td>
+        <select id="chickfila-choice-1" name="chickfila-choice-1" class="select-choice">
+            <option selected="selected" value="breaded">Breaded Nuggets</option>
+            <option value="grilled">Grilled Nuggets</option>
+        </select>
+    </td>
+    <td>
+        <select id="chickfila-order" name="chickfila-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="chickfila-add" name="chickfila-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Thursday November 14</td>
+    <input type="hidden" name="port1-date" value="Thursday November 14, 2013"/>
+    <input type="hidden" name="port1-date-order" value="3"/>
+    <td>
+        <a id="port1" class="btn btn-default btn-success btn-block"
+           data-content="Portofino Pasta with Cheese or Meat Sauce, Fruit &amp; Fruit Roll-Up"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Portofino Pasta">Portofino
+            Pasta</a>
+    </td>
+    <td>
+        <select id="port1-choice-1" name="port1-choice-1" class="select-choice">
+            <option selected="selected" value="cheese">Cheese Sauce</option>
+            <option value="meat">Meat Sauce</option>
+        </select>
+    </td>
+    <td>
+        <select id="port1-order" name="port1-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="port1-add" name="port1-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Friday November 15</td>
+    <input type="hidden" name="pizza2-date" value="Friday November 15, 2013"/>
+    <input type="hidden" name="pizza2-date-order" value="13"/>
+    <td>
+        <a id="pizza2" class="btn btn-default btn-success btn-block"
+           data-content="Cheese or Pepperoni Pizza, choice of Salad or Veggie &amp; Treat"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Pizza Hut">Pizza Hut</a>
+    </td>
+    <td>
+        <select id="pizza2-choice-1" name="pizza2-choice-1" class="select-choice">
+            <option selected="selected" value="cheese">Cheese Pizza</option>
+            <option value="pepp">Pepperoni Pizza</option>
+        </select>
+        <select id="pizza2-choice-2" name="pizza2-choice-2" class="select-choice">
+            <option selected="selected" value="salad">Side Salad</option>
+            <option value="veggie">Veggies</option>
+        </select>
+    </td>
+    <td>
+        <select id="pizza2-order" name="pizza2-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.75</td>
+    <td>
+        <select id="pizza2-add" name="pizza2-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$1.75</td>
+</tr>
+<tr>
+    <td>Monday November 18</td>
+    <input type="hidden" name="subway-date" value="Monday November 18, 2013"/>
+    <input type="hidden" name="subway-date-order" value="5"/>
+    <td>
+        <a id="subway" class="btn btn-default btn-success btn-block"
+           data-content="Turkey &amp; Cheese or Ham &amp; Cheese Sandwich, Fruit &amp; Sun Chips"
+           title="" data-placement="right" data-toggle="popover" href="#"
+           data-original-title="Subway Sandwich">Subway</a>
+    </td>
+    <td>
+        <select id="subway-choice-1" name="subway-choice-1" class="select-choice">
+            <option selected="selected" value="turkey">Turkey &amp Cheese Sandwich</option>
+            <option value="ham">Ham &amp Cheese Sandwich</option>
+        </select>
+        <select id="subway-choice-2" name="subway-choice-2" class="select-choice">
+            <option selected="selected" value="white">White Bread</option>
+            <option value="wheat">Wheat Bread</option>
+        </select>
+    </td>
+    <td>
+        <select id="subway-order" name="subway-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="subway-add" name="subway-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Tuesday November 19</td>
+    <input type="hidden" name="kfc-date" value="Tuesday November 19, 2013"/>
+    <input type="hidden" name="kfc-date-order" value="6"/>
+    <td>
+        <a id="kfc" class="btn btn-default btn-success btn-block"
+           data-content="Chicken Strips with Mashed Potatoes or Grilled Drumstick &amp; Thigh with Corn on the Cob, Biscuit &amp; Fruit"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="KFC">KFC Chicken</a>
+    </td>
+    <td>
+        <select id="kfc-choice-1" name="kfc-choice-1" class="select-choice">
+            <option selected="selected" value="strips">Chicken Strips</option>
+            <option value="grilled">Grilled Drumstick &amp; Thigh</option>
+        </select>
+    </td>
+    <td>
+        <select id="kfc-order" name="kfc-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="kfc-add" name="kfc-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Wednesday November 20</td>
+    <input type="hidden" name="flame-date" value="Wednesday November 20, 2013"/>
+    <input type="hidden" name="flame-date-order" value="7"/>
+    <td>
+        <a id="flame" class="btn btn-default btn-success btn-block"
+           data-content="Chicken &amp; Rice Bowl, Fruit &amp; Frozen Gogurt"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Flame Broiler">Flame
+            Broiler</a>
+    </td>
+    <td>
+    </td>
+    <td>
+        <select id="flame-order" name="flame-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="flame-add" name="flame-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Thursday November 21</td>
+    <input type="hidden" name="port2-date" value="Thursday November 21, 2013"/>
+    <input type="hidden" name="port2-date-order" value="8"/>
+    <td>
+        <a id="port2" class="btn btn-default btn-success btn-block"
+           data-content="Pasta, Lasagna or Salad with Grilled Chicken, Fruit &amp; Treat"
+           title="" data-placement="right" data-toggle="popover" href="#" data-original-title="Portofino">Portofino
+            Pasta/Lasagna/Salad</a>
+    </td>
+    <td>
+        <select id="port2-choice-1" name="port2-choice-1" class="select-choice">
+            <option selected="selected" value="pasta">Pasta with Marinara &amp; Meatball</option>
+            <option value="lasagna">Lasagna</option>
+            <option value="salad">Salad with Grilled Chicken</option>
+        </select>
+    </td>
+    <td>
+        <select id="port2-order" name="port2-order" class="select-yes-no">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$4.50</td>
+    <td>
+        <select id="port2-add" name="port2-add" class="select-add">
+            <option selected="selected" value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </td>
+    <td>$3.00</td>
+</tr>
+<tr>
+    <td>Friday November 22</td>
+    <td>No Hot Lunch</td>
+</tr>
+
+</tbody>
+</table>
+</fieldset>
+<label class="checkbox">
+    <input type="checkbox" name="agreement" id="agreement">
+    I agree that my child's order will only be placed when payment is received within the week of ordering
+</label>
+
+</form>
+<button id="submit" class="btn btn-primary">Submit Hot Lunch Order</button>
+<button id="another" class="btn btn-info">Add Another Hot Lunch Order</button>
+<h3 id="test"></h3>
+
+</div>
+</body>
+</html>

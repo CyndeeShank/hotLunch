@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <title>Hot Lunch Input</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-flatly.css" rel="stylesheet" type="text/css">
+    <!-- Hot Lunch Specific Styles -->
+    <link href="css/lunch.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+</script>
+<script type="text/javascript" src="js/bootstrap.js">
+</script>
+<script type="text/javascript" src="js/input.js">
+</script>
+
+<div id="container" class="container">
+    <h1>Hot Lunch Item Input</h1>
+
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label>Name:</label>
+
+            <div class="controls">
+                <input id="name" type="text">
+            </div>
+        </div>
+        <hr/>
+        <div class="control-group">
+            <label>Description:</label>
+
+            <div class="controls">
+                <input id="desc" type="text" size="100" maxlength="100">
+            </div>
+        </div>
+        <hr/>
+
+        <div class="control-group">
+            <label>Food Choice:</label>
+
+            <div class="controls">
+                <select id="item-choice">
+                    <option selected="selected" value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+
+                <div class="control-group">
+                    <label>Choice 1:</label>
+
+                    <div class="controls">
+                        <input id="choice-1" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Choice 2:</label>
+
+                    <div class="controls">
+                        <input id="choice-2" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Choice 3:</label>
+
+                    <div class="controls">
+                        <input id="choice-3" type="text">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label>Side Choice:</label>
+
+            <div class="controls">
+                <select id="side-choice">
+                    <option selected="selected" value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+
+                <div class="control-group">
+                    <label>Choice 1:</label>
+
+                    <div class="controls">
+                        <input id="side-choice-1" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Choice 2:</label>
+
+                    <div class="controls">
+                        <input id="side-choice-2" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Choice 3:</label>
+
+                    <div class="controls">
+                        <input id="side-choice-3" type="text">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+
+        <div class="control-group">
+            <label>Price:</label>
+
+            <div class="controls">
+                <input id="price" type="text">
+            </div>
+        </div>
+        <div class="control-group">
+            <label>Price Additional:</label>
+
+            <div class="controls">
+                <input id="price-add" type="text">
+            </div>
+        </div>
+        <hr/>
+
+        <div class="control-group">
+            <label>Sides:</label>
+
+            <div class="controls">
+                <select multiple size="9" id="item-side">
+                    <option selected="selected" value="fruit">Fruit</option>
+                    <option value="veggie-carrots">Carrots and Ranch</option>
+                    <option value="veggie-salad">Green Salad cup</option>
+                    <option value="chips-sun-chips">Sun Chips</option>
+                    <option value="chips-lays">Lays</option>
+                    <option value="chips-cheez">Cheez It</option>
+                    <option value="treat-rice-krispie">Rice Krispie Treat</option>
+                    <option value="treat-fruit-rollup">Fruit Roll Up Treat</option>
+                    <option value="treat-cookies">Cookie Treat</option>
+                </select>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="control-group">
+            <label>Condiments:</label>
+
+            <div class="controls">
+                <select multiple size="7" id="condiments">
+                    <option selected="selected" value="ketchup">Ketchup</option>
+                    <option value="mayo">Mayo</option>
+                    <option value="mustard">Mustard</option>
+                    <option value="ranch">Ranch</option>
+                    <option value="taco-sauce">Taco Sauce</option>
+                    <option value="salsa">Salsa</option>
+                    <option value="cheese">Cheese Sauce</option>
+                </select>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="control-group">
+            <label>Paper Goods:</label>
+
+            <div class="controls">
+                <select multiple size="9" id="paper-goods">
+                    <option selected="selected" value="napkin">Napkin</option>
+                    <option value="lunch-bag">Lunch Bag</option>
+                    <option value="plate">Plate</option>
+                    <option value="fork">Fork</option>
+                    <option value="large-lunch-bag">Large Lunch Bag</option>
+                    <option value="tray">Tray</option>
+                    <option value="ziplock">Ziplock Bag</option>
+                    <option value="foil">Foil Sheet</option>
+                    <option value="cup-lid">Cup/Lid</option>
+                </select>
+            </div>
+        </div>
+        <hr/>
+
+    </form>
+    <button id="submit" class="btn btn-info">Submit Hot Lunch Item</button>
+
+    <h3 id="result"></h3>
+</div>
+</body>
+</html>

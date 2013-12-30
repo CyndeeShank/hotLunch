@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <title>Hot Lunch Order Payment Lookup</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-amelia.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-amelia.css" rel="stylesheet" type="text/css">
+    <!-- Hot Lunch Specific Styles -->
+    <link href="css/lunch.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/lunch-payment.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/jquery.printPage.js"></script>
+
+<div id="container" class="container">
+    <fieldset>
+        <legend>Enter the name and grade to lookup hot lunch orders</legend>
+        <select id="month" name="month">
+            <option selected="selected">Select Month</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+
+        <p/>
+        <select id="grade" name="grade">
+            <option selected="selected">Select Grade</option>
+            <option value="K">Kindergarten</option>
+            <option value="1">Grade 1</option>
+            <option value="2">Grade 2</option>
+            <option value="3">Grade 3</option>
+            <option value="4">Grade 4</option>
+            <option value="5">Grade 5</option>
+            <option value="6">Grade 6</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="F">Faculty/Aide</option>
+        </select>
+
+        <div>
+            <button id="submit-lookup" class="btn btn-info">Submit Order Lookup Request</button>
+        </div>
+    </fieldset>
+    <p/>
+
+    <div id="result">
+        <form class="form-horizontal">
+            <table class="table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Order Total</th>
+                    <th>Order Paid</th>
+                    <th>Amount Paid</th>
+                    <th>Payment Type</th>
+                    <th>Submit</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button id="submit-payment-item" class="btn btn-primary">Submit Payment</button>
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="control-group">
+                <label>Name:</label>
+
+                <div class="controls">
+                    <input id="name-pay" name="name-pay" type="text" disabled>
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <label>Total Ordered:</label>
+
+                <div class="controls">
+                    <input id="total-pay" name="grade-pay" type="text" value="$25.50" disabled>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="paid"> Order Paid:</label>
+
+                <div class="controls">
+                    <select id="paid" name="paid" class="select-yes-no">
+                        <option selected="selected" value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Amount Paid: </label>
+
+                <div class="controls">
+                    <input id="amount-pay" name="amount-pay" type="text">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="type-pay"> Payment Type: </label>
+
+                <div class="controls">
+                    <select id="type-pay" name="type-pay" class="select-yes-no">
+                        <option selected="selected" value="10">Check</option>
+                        <option value="20">Cash</option>
+                        <option value="30">Credit</option>
+                        <option value="40">PayPal</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button id="submit-payment" class="btn btn-primary">Submit Order Payment Information</button>
+        </div>
+    </div>
+    <div id="bottom"></div>
+</div>
+</body>
+</html>
