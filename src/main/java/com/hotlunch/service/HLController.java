@@ -127,7 +127,7 @@ public class HLController extends Constants
          */
         int itemType = CARLS_ITEM;
         String item = "carls-";
-        if (request.getParameter(item + "order").equalsIgnoreCase("true"))
+        if (request.getParameter(item + "order") != null && request.getParameter(item + "order").equalsIgnoreCase("true"))
         {
             orderTotal += CARLS_SINGLE_PRICE;
             LunchOrderItem lunchOrderItem = new LunchOrderItem();
@@ -149,7 +149,7 @@ public class HLController extends Constants
 
         itemType = CARLS_ITEM;
         item = "carls1-";
-        if (request.getParameter(item + "order").equalsIgnoreCase("true"))
+        if (request.getParameter(item + "order") != null && request.getParameter(item + "order").equalsIgnoreCase("true"))
         {
             orderTotal += CARLS_SINGLE_PRICE;
             LunchOrderItem lunchOrderItem = new LunchOrderItem();
@@ -179,7 +179,7 @@ public class HLController extends Constants
          */
         itemType = CHICKFILA_ITEM;
         item = "chickfila-";
-        if (request.getParameter(item + "order").equalsIgnoreCase("true"))
+        if (request.getParameter(item + "order") != null && request.getParameter(item + "order").equalsIgnoreCase("true"))
         {
             orderTotal += CHICKFILA_SINGLE_PRICE;
             LunchOrderItem lunchOrderItem = new LunchOrderItem();
@@ -783,7 +783,7 @@ public class HLController extends Constants
         }
 
         orderItem.setOrderTotal(orderTotal);
-        orderItem.setMonth("December");
+        orderItem.setMonth("February");
         orderItem.setCurrentDate(Calendar.getInstance().getTime());
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.setPaid(false);
