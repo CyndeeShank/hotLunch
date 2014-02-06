@@ -1148,9 +1148,9 @@ public class HLController extends Constants
     @RequestMapping(value = "/getAllOrdersForMonth2/{month}", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, List<LunchOrderItem>> getAllOrdersForMonth2(@PathVariable("month") String month)
+    Map<Date, List<LunchOrderItem>> getAllOrdersForMonth2(@PathVariable("month") String month)
     {
-        Map<String, List<LunchOrderItem>> orderListMap = null;
+        Map<Date, List<LunchOrderItem>> orderListMap = null;
         List<OrderItem> orderItemList = null;
         try
         {

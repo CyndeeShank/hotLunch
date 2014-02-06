@@ -539,14 +539,15 @@ public class Report
         HSSFRow rowData = null;
         int rowNum = 2;
 
-        Map<String, PurchasingItem> allItemsMap = new HashMap<String, PurchasingItem>();
-        Map<String, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
+        Map<Date, PurchasingItem> allItemsMap = new HashMap<Date, PurchasingItem>();
+        //Map<String, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
+        SortedMap<Date, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
 
         Set dateKeys = dateListMap.keySet();
         Iterator iterator = dateKeys.iterator();
         while (iterator.hasNext())
         {
-            String key = (String) iterator.next(); // date -- need to parse into #1 and #2
+            Date key = (Date) iterator.next(); // date -- need to parse into #1 and #2
             List<LunchOrderItem> lunchOrderItemList = dateListMap.get(key);
             int numOrdered = lunchOrderItemList.size();
             logger.log(Level.INFO, "key: " + key + " --- size of list: " + numOrdered);
@@ -771,14 +772,17 @@ public class Report
         HSSFRow rowData = null;
         int rowNum = 2;
 
-        Map<String, PurchasingItem> allItemsMap = new HashMap<String, PurchasingItem>();
-        Map<String, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
+        SortedMap<Date, PurchasingItem> allItemsMap = new TreeMap<Date, PurchasingItem>();
+        //Map<String, PurchasingItem> allItemsMap = new HashMap<String, PurchasingItem>();
+        //Map<String, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
+        SortedMap<Date, List<LunchOrderItem>> dateListMap = hlService.createPurchasingMap(orderItemList);
 
         Set dateKeys = dateListMap.keySet();
         Iterator iterator = dateKeys.iterator();
         while (iterator.hasNext())
         {
-            String key = (String) iterator.next(); // date -- need to parse into #1 and #2
+            //String key = (String) iterator.next(); // date -- need to parse into #1 and #2
+            Date key = (Date) iterator.next(); // date -- need to parse into #1 and #2
             List<LunchOrderItem> lunchOrderItemList = dateListMap.get(key);
             logger.log(Level.INFO, "key: " + key + " --- size of list: " + lunchOrderItemList.size());
 
@@ -841,9 +845,12 @@ public class Report
 
                 // smoothie
                 case 120:
+                    purchasingItem = getSmoothieAndSandwichInfo(lunchOrderItemList);
+                    /*
                     allItemsMap.put(key, purchasingItem);
-                    purchasingItem = getSmoothieInfo(lunchOrderItemList);
                     purchasingItem = getSandwichInfo(lunchOrderItemList);
+                    purchasingItem = getSmoothieInfo(lunchOrderItemList);
+                    */
                     break;
 
                 // subway
@@ -867,17 +874,32 @@ public class Report
         Iterator iterator1 = keys.iterator();
         while (iterator1.hasNext())
         {
-            String date = (String) iterator1.next();
+            boolean smoothie = false;
+            Date date = (Date) iterator1.next();
+            //SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+            SimpleDateFormat dateFormatDay = new SimpleDateFormat("EEEE");
+            String dateString = dateFormat.format(date);
+            String day = dateFormatDay.format(date);
+            //String date = (String) iterator1.next();
             PurchasingItem purchasingItem = allItemsMap.get(date);
             logger.log(Level.INFO, "purchasingItem: " + purchasingItem.getVendorName());
+            if (purchasingItem.getVendorName().equalsIgnoreCase("SmoothieSand"))
+            {
+                logger.log(Level.INFO, "smoothie and sandwich selection");
+                purchasingItem.setVendorName("Tropical Smoothie");
+                smoothie = true;
+            }
 
             rowData = sheet.createRow(rowNum);
             // day
             HSSFCell cellRow = rowData.createCell(0);
-            cellRow.setCellValue(date);
+            //cellRow.setCellValue(date);
+            cellRow.setCellValue(day);
             // date
             cellRow = rowData.createCell(1);
-            cellRow.setCellValue(date);
+            //cellRow.setCellValue(date);
+            cellRow.setCellValue(dateString);
             // vendor
             cellRow = rowData.createCell(2);
             cellRow.setCellValue(purchasingItem.getVendorName());
@@ -917,10 +939,22 @@ public class Report
             {
                 rowNum++;
                 rowData = sheet.createRow(rowNum);
+                if (smoothie)
+                {
+                    cellRow = rowData.createCell(2);
+                    cellRow.setCellValue("Albertson's");
+                }
                 cellRow = rowData.createCell(3);
                 cellRow.setCellValue(purchasingItem.getChoice3());
                 cellRow = rowData.createCell(4);
                 cellRow.setCellValue(purchasingItem.getChoice3Amount());
+                if (smoothie)
+                {
+                    cellRow = rowData.createCell(5);
+                    cellRow.setCellValue(5);
+                    cellRow = rowData.createCell(6);
+                    cellRow.setCellValue(Constants.SANDWICH_ITEM_COST);
+                }
             }
             if (purchasingItem.getChoice4() != null)
             {
@@ -1178,6 +1212,73 @@ public class Report
 
     }
 
+    private PurchasingItem getSmoothieAndSandwichInfo(List<LunchOrderItem> lunchOrderItemList)
+    {
+        logger.log(Level.INFO, "inside getSmoothieAndSandwichInfo...size of list: " + lunchOrderItemList.size());
+        int jetty = 0;
+        int mango = 0;
+        int turkey = 0;
+        int ham = 0;
+        PurchasingItem purchasingItem = new PurchasingItem();
+        purchasingItem.setVendorName("SmoothieSand");
+        //purchasingItem.setVendorName("Tropical Smoothie / Albertson's");
+        purchasingItem.setItemCost(Constants.SMOOTHIE_ITEM_COST);
+//        purchasingItem.setItemCost(Constants.SANDWICH_ITEM_COST);
+        purchasingItem.setChoice1("jetty punch");
+        purchasingItem.setChoice2("mango magic");
+        purchasingItem.setChoice3("turkey croissant");
+        purchasingItem.setChoice4("ham croissant");
+
+        Iterator iterator1 = lunchOrderItemList.iterator();
+        logger.log(Level.INFO, "--------------------------------------------");
+        while (iterator1.hasNext())
+        {
+            LunchOrderItem lunchOrderItem = (LunchOrderItem) iterator1.next();
+
+            if (lunchOrderItem.getChoice1().equalsIgnoreCase("jetty"))
+            {
+                jetty++;
+                if (lunchOrderItem.isOrderAdditional())
+                {
+                    jetty++;
+                }
+            }
+            else if (lunchOrderItem.getChoice1().equalsIgnoreCase("mango"))
+            {
+                mango++;
+                if (lunchOrderItem.isOrderAdditional())
+                {
+                    mango++;
+                }
+            }
+            if (lunchOrderItem.getChoice2().equalsIgnoreCase("turkey"))
+            {
+                turkey++;
+                if (lunchOrderItem.isOrderAdditional())
+                {
+                    turkey++;
+                }
+            }
+            else if (lunchOrderItem.getChoice2().equalsIgnoreCase("ham"))
+            {
+                ham++;
+                if (lunchOrderItem.isOrderAdditional())
+                {
+                    ham++;
+                }
+            }
+        }
+        logger.log(Level.INFO, "jetty: " + jetty + "/ mango: " + mango);
+        logger.log(Level.INFO, "turkey: " + turkey + "/ ham: " + ham);
+        purchasingItem.setChoice1Amount(jetty);
+        purchasingItem.setChoice2Amount(mango);
+        purchasingItem.setChoice3Amount(turkey);
+        purchasingItem.setChoice4Amount(ham);
+        purchasingItem.setExtra(5);
+
+        return purchasingItem;
+    }
+
     private PurchasingItem getSandwichInfo(List<LunchOrderItem> lunchOrderItemList)
     {
         logger.log(Level.INFO, "inside getSandwichInfo...size of list: " + lunchOrderItemList.size());
@@ -1233,6 +1334,7 @@ public class Report
         while (iterator1.hasNext())
         {
             LunchOrderItem lunchOrderItem = (LunchOrderItem) iterator1.next();
+
             if (lunchOrderItem.getChoice1().equalsIgnoreCase("jetty"))
             {
                 jetty++;

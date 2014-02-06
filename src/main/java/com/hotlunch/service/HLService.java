@@ -666,7 +666,77 @@ public class HLService
 
     }
 
-    public Map<String, List<LunchOrderItem>> createPurchasingMap(List<OrderItem> orderItemList)
+    public SortedMap<Date, List<LunchOrderItem>> createPurchasingMap(List<OrderItem> orderItemList)
+    {
+        logger.log(Level.INFO, "in createPurchasingMap");
+        Map<String, List<LunchOrderItem>> dateListMap = new HashMap<String, List<LunchOrderItem>>();
+
+        for (OrderItem orderItem : orderItemList)
+        {
+            // get the HLOrderItem map from the orderItem
+            HLOrderItemMap hlOrderItemMap = orderItem.getLunchOrderItemMap();
+
+            // get the lunchOrderItemMap from the HLOrderItemMap
+            Map<String, LunchOrderItem> lunchOrderItemMap = hlOrderItemMap.getOrderItemMap();
+            if (lunchOrderItemMap != null)
+            {
+                // get the keys, which is the date string
+                Set keys = lunchOrderItemMap.keySet();
+                Iterator iterator = keys.iterator();
+                while (iterator.hasNext())
+                {
+                    String key = (String) iterator.next(); // date string
+                    Date date = new Date(key);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd");
+                    String dateString = dateFormat.format(date);
+                    //logger.log(Level.INFO, "==== key/date/string: " + key + "/" + date + "/" + dateString);
+                    LunchOrderItem lunchOrderItem = lunchOrderItemMap.get(key);
+                    List<LunchOrderItem> lunchOrderItemList = null;
+                    if (dateListMap.containsKey(key))
+                    {
+                        // get list from map because it already exists
+                        lunchOrderItemList = dateListMap.get(key);
+                    }
+                    else
+                    {
+                        // create new list
+                        lunchOrderItemList = new ArrayList<LunchOrderItem>();
+                    }
+                    lunchOrderItemList.add(lunchOrderItem);
+                    // save the list to the map (with the date as the key)
+                    dateListMap.put(key, lunchOrderItemList);
+                }
+            }
+        }
+
+
+        SortedMap<Date, List<LunchOrderItem>> updatedMap = new TreeMap<Date, List<LunchOrderItem>>();
+        // convert the string/list to a date/list
+        Set keys = dateListMap.keySet();
+        Iterator iterator = keys.iterator();
+        while (iterator.hasNext())
+        {
+            String key = (String)iterator.next(); // date string
+            List<LunchOrderItem> lunchOrderItems = dateListMap.get(key);
+            Date date = new Date(key);
+            updatedMap.put(date, lunchOrderItems);
+        }
+
+        logger.log(Level.INFO, "******  Size of updatedMap: " + updatedMap.size());
+        Set keyset = updatedMap.keySet();
+        Iterator iter = keyset.iterator();
+        while (iter.hasNext())
+        {
+            Date key = (Date) iter.next(); // date
+            List<LunchOrderItem> lunchOrderItemList = updatedMap.get(key);
+            logger.log(Level.INFO, "key: " + key + " --- size of list: " + lunchOrderItemList.size());
+        }
+
+        return updatedMap;
+        //return dateListMap;
+    }
+
+    public Map<String, List<LunchOrderItem>> createPurchasingMapCurrent(List<OrderItem> orderItemList)
     {
         logger.log(Level.INFO, "in createPurchasingMap");
         Map<String, List<LunchOrderItem>> dateListMap = new HashMap<String, List<LunchOrderItem>>();
